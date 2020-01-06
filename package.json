@@ -2,7 +2,7 @@
   "name": "rpc-worker-thread",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/rpc.js",
+  "main": "index.js",
   "scripts": {
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
