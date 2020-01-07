@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint .",
     "build": "tsc",
     "test": "mocha ./tests/rpc-worker-test.js"
   },
