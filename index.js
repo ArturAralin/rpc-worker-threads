@@ -1,1 +1,3 @@
-const rpcWorkerThread = require('./dist/rpc');
+const rpcWorkerThread = require('./dist/rpc-worker-thread');
+
+module.exports = rpcWorkerThread;

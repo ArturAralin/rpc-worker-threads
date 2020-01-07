@@ -9,27 +9,27 @@ class RPC {
             const handler = this.handlers[req.name];
             if (!handler) {
                 msgPort.postMessage({
+                    name,
                     status: 'not_found',
                     taskId,
-                    name,
                 });
                 return;
             }
             try {
                 const response = await handler(req.data);
                 msgPort.postMessage({
-                    status: 'success',
-                    taskId,
                     name,
                     response,
+                    status: 'success',
+                    taskId,
                 });
             }
             catch (err) {
                 msgPort.postMessage({
-                    status: 'error',
-                    taskId,
                     name,
                     response: err,
+                    status: 'error',
+                    taskId,
                 });
             }
         });
@@ -38,15 +38,14 @@ class RPC {
         this.handlers[name] = cb;
     }
 }
+exports.RPC = RPC;
 if (worker_threads_1.parentPort) {
-    worker_threads_1.parentPort.on('message', (channel) => {
+    worker_threads_1.parentPort.on('message', ({ channel, pathToFile, }) => {
         if (worker_threads_1.parentPort) {
-            const r = new RPC(channel);
-            r.addHandler('test_task', (r) => {
-                console.log('test_task ready');
-                return 'ok';
-            });
+            global.RPCWorker = new RPC(channel);
             worker_threads_1.parentPort.postMessage('ready');
+            require(pathToFile);
         }
     });
 }
+//# sourceMappingURL=init-file.js.map

@@ -1,20 +1,26 @@
 {
   "name": "rpc-worker-thread",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha ./tests/rpc-worker-test.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["rpc", "worker_threads", "worker"],
+  "author": "Artur Aralin",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^13.1.4",
     "@types/uuid": "^3.4.6",
+    "@typescript-eslint/eslint-plugin": "^2.15.0",
+    "@typescript-eslint/parser": "^2.15.0",
     "chai": "^4.2.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.19.1",
     "mocha": "^7.0.0",
+    "tslint": "^5.20.1",
     "typescript": "^3.7.4"
   },
   "dependencies": {

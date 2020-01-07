@@ -1,29 +1,29 @@
+import { ok } from 'assert';
 import {
-  parentPort,
   MessagePort,
+  parentPort,
 } from 'worker_threads';
 import {
-  RPCRequest,
-  RPCResponse,
+  IRPCRequest,
+  IRPCResponse,
 } from './interfaces';
-import { ok } from 'assert';
 
 type CallbackFn = (v?: any) => any;
 
-class RPC {
+export class RPC {
   private handlers: { [k: string]: CallbackFn } = {};
 
   constructor(msgPort: MessagePort) {
-    msgPort.on('message', async (req: RPCRequest) => {
+    msgPort.on('message', async (req: IRPCRequest) => {
       const { taskId, name } = req;
       const handler = this.handlers[req.name];
 
       if (!handler) {
         msgPort.postMessage({
+          name,
           status: 'not_found',
           taskId,
-          name,
-        } as RPCResponse);
+        } as IRPCResponse);
 
         return;
       }
@@ -32,39 +32,37 @@ class RPC {
         const response = await handler(req.data);
 
         msgPort.postMessage({
-          status: 'success',
-          taskId,
           name,
           response,
-        } as RPCResponse);
+          status: 'success',
+          taskId,
+        } as IRPCResponse);
       } catch (err) {
         msgPort.postMessage({
-          status: 'error',
-          taskId,
           name,
           response: err,
-        } as RPCResponse);
+          status: 'error',
+          taskId,
+        } as IRPCResponse);
       }
-    })
+    });
   }
 
-  addHandler(name: string, cb: CallbackFn) {
+  public addHandler(name: string, cb: CallbackFn) {
     this.handlers[name] = cb;
   }
 }
 
 if (parentPort) {
-  parentPort.on('message', (channel: MessagePort) => {
+  parentPort.on('message', ({
+    channel,
+    pathToFile,
+  }) => {
     if (parentPort) {
-      const r = new RPC(channel);
-
-      r.addHandler('test_task', (r) => {
-        console.log('test_task ready');
-
-        return 'ok';
-      });
+      global.RPCWorker = new RPC(channel);
 
       parentPort.postMessage('ready');
+      require(pathToFile);
     }
   });
 }
