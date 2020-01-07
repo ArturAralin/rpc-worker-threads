@@ -1,5 +1,5 @@
 {
-  "name": "rpc-worker-thread",
+  "name": "rpc-worker-threads",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
