@@ -35,6 +35,12 @@ class RPC {
         });
     }
     addHandler(name, cb) {
+        if (typeof name !== 'string') {
+            throw new Error('First argument of addHandler must be a String');
+        }
+        if (typeof cb !== 'function') {
+            throw new Error('Second argument of addHandler must be a Function');
+        }
         this.handlers[name] = cb;
     }
 }

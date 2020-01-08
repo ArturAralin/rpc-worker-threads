@@ -27,7 +27,7 @@ class RPCWorker extends worker_threads_1.Worker {
                 if (msg === 'ready') {
                     this.started = true;
                     this.msgPort.on('message', this.responseHandler.bind(this));
-                    resolve();
+                    resolve(this);
                     return;
                 }
                 reject();
