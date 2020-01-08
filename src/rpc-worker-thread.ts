@@ -32,7 +32,7 @@ export class RPCWorker extends Worker {
     this.targetFile = filename;
   }
 
-  public init() {
+  public init(): Promise<RPCWorker> {
     return new Promise((resolve, reject) => {
       const { port1, port2 } = new MessageChannel();
 
@@ -43,7 +43,7 @@ export class RPCWorker extends Worker {
           this.started = true;
           this.msgPort.on('message', this.responseHandler.bind(this));
 
-          resolve();
+          resolve(this);
 
           return;
         }
