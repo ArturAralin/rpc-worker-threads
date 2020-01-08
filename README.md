@@ -26,3 +26,7 @@ if (isMainThread) {
   });
 }
 ```
+
+# Pooling example
+
+Look example [here](tree/master/examples/threads-pool)
