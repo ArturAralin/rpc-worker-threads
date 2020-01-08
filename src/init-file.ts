@@ -1,4 +1,3 @@
-import { ok } from 'assert';
 import {
   MessagePort,
   parentPort,
@@ -49,6 +48,14 @@ export class RPC {
   }
 
   public addHandler(name: string, cb: CallbackFn) {
+    if (typeof name !== 'string') {
+      throw new Error('First argument of addHandler must be a String');
+    }
+
+    if (typeof cb !== 'function') {
+      throw new Error('Second argument of addHandler must be a Function');
+    }
+
     this.handlers[name] = cb;
   }
 }
