@@ -8,7 +8,11 @@
     "build": "tsc",
     "test": "mocha ./tests/rpc-worker-test.js"
   },
-  "keywords": ["rpc", "worker_threads", "worker"],
+  "keywords": [
+    "rpc",
+    "worker_threads",
+    "worker"
+  ],
   "author": "Artur Aralin",
   "license": "ISC",
   "devDependencies": {
