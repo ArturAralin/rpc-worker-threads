@@ -14,7 +14,7 @@
     "worker"
   ],
   "author": "Artur Aralin",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@types/node": "^13.1.4",
     "@types/uuid": "^3.4.6",
