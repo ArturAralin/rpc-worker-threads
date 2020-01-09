@@ -29,4 +29,4 @@ if (isMainThread) {
 
 # Pooling example
 
-Look example [here](tree/master/examples/threads-pool)
+Look example [here](https://github.com/ArturAralin/rpc-worker-threads/tree/master/examples/threads-pool)
