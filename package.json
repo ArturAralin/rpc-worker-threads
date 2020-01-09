@@ -10,7 +10,7 @@
   },
   "keywords": [
     "rpc",
-    "worker_threads",
+    "threads",
     "worker"
   ],
   "author": "Artur Aralin",
