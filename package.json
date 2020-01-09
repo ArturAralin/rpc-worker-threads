@@ -1,7 +1,7 @@
 {
   "name": "rpc-worker-threads",
   "version": "0.0.3",
-  "description": "",
+  "description": "Worker thread with a RPC api",
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
@@ -14,6 +14,10 @@
     "worker"
   ],
   "author": "Artur Aralin",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ArturAralin/rpc-worker-threads.git"
+  },
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^13.1.4",
