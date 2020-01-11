@@ -27,6 +27,12 @@ if (isMainThread) {
 }
 ```
 
+# API
+
+### RPCWorker.send(fnName: string, data?: any, transferList?: Array<ArrayBuffer | MessagePort>)
+
+### PRC.addHandler(fnName: string, callback: Function)
+
 # Pooling example
 
 Look example [here](https://github.com/ArturAralin/rpc-worker-threads/tree/master/examples/threads-pool)
