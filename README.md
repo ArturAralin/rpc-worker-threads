@@ -1,3 +1,5 @@
+# !IMPORTANT. Lib is not ready to production or development use.
+
 # rpc-worker-threads
 
 # How to use
@@ -29,10 +31,29 @@ if (isMainThread) {
 
 # API
 
-### RPCWorker.send(fnName: string, data?: any, transferList?: Array<ArrayBuffer | MessagePort>)
+## RPCWorker(filename: string, options?: WorkerOptions | undefined) extends Worker
 
+### RPCWorker.send(opts): Promise<any>
+* opts.name - remote method name
+* opts.data [optional] - payload
+* opts.transferList - transfer list. [More in the node docs](https://nodejs.org/api/worker_threads.html#worker_threads_port_postmessage_value_transferlist)
+* opts.executionTimeout [optional] - execution timeout
+
+### RPCWorker.setDefaultExecutionTimeout(timeout: number)
+
+## RPC
 ### PRC.addHandler(fnName: string, callback: Function)
 
-# Pooling example
+## RPCWorkersPool(poolOpts, filename: string, options?: WorkerOptions | undefined)
+
+### RPCWorkersPool.send(opts): Promise<any>
+* opts.name - remote method name
+* opts.data [optional] - payload
+* opts.transferList - transfer list. [More in the node docs](https://nodejs.org/api/worker_threads.html#worker_threads_port_postmessage_value_transferlist)
+* opts.executionTimeout [optional] - execution timeout
+
+### RPCWorkersPool.close(): Promise<void>
+
+# Custom pooling example
 
 Look example [here](https://github.com/ArturAralin/rpc-worker-threads/tree/master/examples/threads-pool)
