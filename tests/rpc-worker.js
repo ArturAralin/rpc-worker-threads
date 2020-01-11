@@ -9,3 +9,9 @@ RPCWorker.addHandler('sum', (arr) => {
 RPCWorker.addHandler('throw_error', () => {
   throw new Error('fail');
 });
+
+RPCWorker.addHandler('long_task', async () => {
+  await new Promise((resolve) => {
+    setTimeout(resolve, 10000);
+  });
+});

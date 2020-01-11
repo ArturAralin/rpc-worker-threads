@@ -19,20 +19,37 @@ describe('RPCWorker', () => {
   });
 
   it('should be successfully finished', async () => {
-    const result = await rpcWorker.send('sum', [1, 2, 3, 4]);
+    const result = await rpcWorker.send({
+      name: 'sum',
+      data: [1, 2, 3, 4],
+    });
 
     expect(result).to.equals(10);
   });
 
   it('should return a error', async () => {
-    const result = await rpcWorker.send('throw_error').catch((err) => err);
+    const result = await rpcWorker.send({
+      name: 'throw_error',
+    }).catch((err) => err);
 
     expect(result.status).to.equals('error');
   });
 
   it('should return not-found error', async () => {
-    const result = await rpcWorker.send('unknown').catch((err) => err);
+    const result = await rpcWorker.send({
+      name: 'unknown',
+    }).catch((err) => err);
 
     expect(result.status).to.equals('not_found');
+  });
+
+  it('should return timeout exceeded', async () => {
+    const result = await rpcWorker.send({
+      name: 'long_task',
+      executionTimeout: 20,
+    }).catch((err) => err);
+
+
+    expect(result.status).to.equals('timeout');
   });
 });
