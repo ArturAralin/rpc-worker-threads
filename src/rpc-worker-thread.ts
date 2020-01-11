@@ -58,7 +58,7 @@ export class RPCWorker extends Worker {
     });
   }
 
-  public send(name: string, data?: any) {
+  public send(name: string, data?: any, transferList?: Array<ArrayBuffer | MessagePort>) {
     if (!this.started) {
       throw new Error('RPC Worker is not started');
     }
@@ -72,7 +72,7 @@ export class RPCWorker extends Worker {
         data,
         name,
         taskId,
-      } as IRPCRequest);
+      } as IRPCRequest, transferList);
     });
   }
 
