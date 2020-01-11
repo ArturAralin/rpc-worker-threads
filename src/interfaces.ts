@@ -5,7 +5,7 @@ export interface IRPCRequest {
 }
 
 export interface IRPCResponse {
-  status: 'success' | 'error' | 'not_found';
+  status: 'success' | 'error' | 'not_found' | 'timeout';
   taskId: string;
   name: string;
   response?: any;
