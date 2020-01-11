@@ -83,6 +83,8 @@ export class RPCWorker extends Worker {
       throw new Error(`Unknown task id ${res.taskId}`);
     }
 
+    this.tasks.delete(res.taskId);
+
     if (res.status === 'success') {
       task.resolve(res.response);
 
