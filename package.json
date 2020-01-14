@@ -19,6 +19,9 @@
     "type": "git",
     "url": "https://github.com/ArturAralin/rpc-worker-threads.git"
   },
+  "engines": {
+    "node": ">=12"
+  },
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^13.1.4",
