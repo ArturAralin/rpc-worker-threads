@@ -31,4 +31,3 @@ class RPCWorkersPool {
 }
 exports.RPCWorkersPool = RPCWorkersPool;
 exports.default = RPCWorkersPool;
-//# sourceMappingURL=RPCWorkersPool.js.map

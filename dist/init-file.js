@@ -54,4 +54,3 @@ if (worker_threads_1.parentPort) {
         }
     });
 }
-//# sourceMappingURL=init-file.js.map

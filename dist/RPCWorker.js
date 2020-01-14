@@ -82,4 +82,3 @@ class RPCWorker extends worker_threads_1.Worker {
 }
 exports.RPCWorker = RPCWorker;
 exports.default = RPCWorker;
-//# sourceMappingURL=RPCWorker.js.map
