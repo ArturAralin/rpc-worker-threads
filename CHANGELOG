@@ -1,0 +1,13 @@
+# Changelog
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+
+## [0.0.7] - 2020-01-14
+### Added
+- Automatic initialization on first call send method if not initialized above
+### Changed
+- Added to tsconfig.json following rules declaration, declarationMap
+
