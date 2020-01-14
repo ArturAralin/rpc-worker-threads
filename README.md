@@ -1,4 +1,5 @@
-# !IMPORTANT. Lib is not ready to production or development use.
+# IMPORTANT
+This library is not ready to production use, but you can experiment with it on your pet projects 😊
 
 # rpc-worker-threads
 
