@@ -18,6 +18,18 @@ describe('RPCWorker', () => {
     rpcWorker.terminate();
   });
 
+  it('should automatically init worker on first call send method', async () => {
+    const worker = new RPCWorker(WORKER_PATH);
+    const result = await worker.send({
+      name: 'sum',
+      data: [1, 2, 3],
+    });
+
+    worker.terminate();
+
+    expect(result).to.equals(6);
+  });
+
   it('should be successfully finished', async () => {
     const result = await rpcWorker.send({
       name: 'sum',

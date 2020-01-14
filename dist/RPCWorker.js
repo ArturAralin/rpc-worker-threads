@@ -21,6 +21,9 @@ class RPCWorker extends worker_threads_1.Worker {
         this.targetFile = filename;
     }
     init() {
+        if (this.started) {
+            return Promise.resolve(this);
+        }
         return new Promise((resolve, reject) => {
             const { port1, port2 } = new worker_threads_1.MessageChannel();
             this.msgPort = port2;
@@ -39,9 +42,9 @@ class RPCWorker extends worker_threads_1.Worker {
             }, [port1]);
         });
     }
-    send({ name, data, transferList, executionTimeout, }) {
+    async send({ name, data, transferList, executionTimeout, }) {
         if (!this.started) {
-            throw new Error('RPC Worker is not started');
+            await this.init();
         }
         const taskId = uuid_1.v4();
         const timeout = executionTimeout || this.defaultExecutionTimeout;
