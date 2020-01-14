@@ -14,7 +14,10 @@ if (isMainThread) {
     const rpcWorker = new RPCWorker(__filename);
     await rpcWorker.init();
 
-    const result = await rpcWorker.send('myFn', 'World');
+    const result = await rpcWorker.send({
+      name: 'myFn',
+      data: 'World',
+    });
 
     console.log(result); // Hello World!
   }
