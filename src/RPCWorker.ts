@@ -42,6 +42,10 @@ export class RPCWorker extends Worker {
   }
 
   public init(): Promise<RPCWorker> {
+    if (this.started) {
+      return Promise.resolve(this);
+    }
+
     return new Promise((resolve, reject) => {
       const { port1, port2 } = new MessageChannel();
 
@@ -67,14 +71,14 @@ export class RPCWorker extends Worker {
     });
   }
 
-  public send({
+  public async send({
     name,
     data,
     transferList,
     executionTimeout,
   }: ISendOpts) {
     if (!this.started) {
-      throw new Error('RPC Worker is not started');
+      await this.init();
     }
 
     const taskId = genUUID();
