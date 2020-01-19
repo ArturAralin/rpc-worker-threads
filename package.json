@@ -1,6 +1,6 @@
 {
   "name": "rpc-worker-threads",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Worker thread with a RPC api",
   "main": "index.js",
   "scripts": {
