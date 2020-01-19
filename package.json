@@ -9,6 +9,7 @@
     "test": "mocha ./tests/rpc-worker-test.js ./tests/rpc-workers-pool-test.js"
   },
   "keywords": [
+    "node",
     "rpc",
     "threads",
     "worker",
